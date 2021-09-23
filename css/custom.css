@@ -4,7 +4,26 @@ body {
 
 #headCart {
     background-color: green;
-    align-items: center;
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
-    padding-left: 20px;
+    padding: 20px, 20px, 20px, 20px;
+    width: 75%;
+    line-height: 100%;
+}
+
+.lineItem {
+    margin-left: 25%;
+    display: flex;
+    justify-content: center;
+} 
+
+#theItems {
+    list-style: none;
+    margin-left: 100px;
+    margin-top: 25px;
+}
+
+input[type=number] {
+    max-width: 55px;
 }

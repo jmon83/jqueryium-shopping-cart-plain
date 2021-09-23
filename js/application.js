@@ -1,28 +1,48 @@
+$(document).ready(function(){
 
-var addItem = [];
+    var totalPrice = 0;
 
-function shop() {
-    var inventory = {};
-    inventory.price = document.getElementById('price').value;
-    inventory.item = document.getElementById('item').value;
-    addItem.push(inventory);
+    var sum = function() {
+        var prices = $('#itemPrice');
+        var itemQty = $('#itemQty');
 
-    var newDiv = document.createElement('div');
-    newDiv.id = addItem.length;
-    newDiv.classname = 'block';
-    document.getElementById('theItems').appendChild(newDiv);
+        totalPrice = 0;
 
-    var para = document.createElement("span");
-    var node = document.createTextNode('Item: ' + inventory.item + ' |                    '); 
-    para.appendChild(node);
+        for (i=0; i<itemQty.length, i++) {
+            var price = Number($(prices[i]).text().replace(/\$/,""));
+            var subPrice = (Number($(itemQty[i]).val())) * price;
+            if (subPrice !=0) {
+                $($('.itemSub')[i]).text("$" + subPrice);
+            } else {
+                $($('.itemSub')[i]).text("N/A");
+            }
+            totalPrice += subPrice;
+        }
+        return totalPrice;
+    }
+    var addItem = function(name, cost) {
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+        $('#item-list').prepend('<div class="row item"> \
+        <div class="item-name col-xs-3"> \ '
+        +  name + '\
+        </div> \
+        <div class="item-price col-xs-3"> \
+          $' + cost + '.00 \
+        </div> \
+        <div class="item-qty col-xs-3"> \
+          <label>QTY</label> \
+          <input class="quantity"> \
+        </div> \
+        <div class="col-xs-1"> \
+          <button class="remove"> \
+            Remove \
+          </button> \
+        </div> \
+        <div class="item-subtotal col-xs-2"> \
+        $--.-- \
+        </div> \
+      </div>');
+    }
 
-    var element = document.getElementById(addItem.length);
-    element.appendChild(para);
+})
 
-    para = document.createElement('span');
-    node = document.createTextNode('Price:' + inventory.price);
-    para.appendChild(node);
-
-    element.appendChild(para); 
-
-}

@@ -18,10 +18,11 @@
     <link href="css/custom.css" rel="stylesheet">
   </head>
   <body>
-    <div id = "headCart">
-  Item:<input id = "item" type = "text">
-  Price:<input id = "price" type = "number">
-  <button onClick="shop()">Add Item to Cart</button></div>
-  <div id = "theItems"></div>
+    <div id = "headCart" class = "container col-md-6 col-xl-6">
+  <input id = "item" type = "text" placeholder="Enter Item">
+  <input id = "price" type = "number" placeholder="Price">
+  <input id = "qty" type = "number" placeholder="Qty">
+  <button onClick="shop()">Add Item</button></div>
+  <li id ="theItems"></li>
   </body>
 </html>
