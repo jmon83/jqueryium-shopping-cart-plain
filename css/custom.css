@@ -44,12 +44,17 @@ button:focus,
 }
 
 .cart-qty-plus,
-.cart-qty-minus{
+.cart-qty-minus,
+.addItem{
     width: 38px;
     height: 38px;
     background-color: #fff;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+}
+
+#theAdd{
+    width: 33%;
 }
 
 .cart-qty-plus:hover,
