@@ -1,48 +1,46 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-    var totalPrice = 0;
+  updateTotal();
+  $('.qty, .price').on('keyup keypress blur change',
+  function(e) {
+    updateTotal();
+  });
+});
 
-    var sum = function() {
-        var prices = $('#itemPrice');
-        var itemQty = $('#itemQty');
+function updateTotal() {
+  var sum = 0.0;
+  $('#myTable > tbody > tr').each(function() {
+    var qty = $(this).find('.qty').val();
+    var price = $(this).find('.price').val();
+    var amount = (qty * price);
+    sum += amount;
+    $(this).find('.amount').text('' + amount);
+  });
+  $('.total').text(sum);
+}
 
-        totalPrice = 0;
+var plusQty;
+var minusQty;
+var addBtn = $('.cart-qty-plus');
+var subBtn = $('.cart-qty-minus');
 
-        for (i=0; i<itemQty.length, i++) {
-            var price = Number($(prices[i]).text().replace(/\$/,""));
-            var subPrice = (Number($(itemQty[i]).val())) * price;
-            if (subPrice !=0) {
-                $($('.itemSub')[i]).text("$" + subPrice);
-            } else {
-                $($('.itemSub')[i]).text("N/A");
-            }
-            totalPrice += subPrice;
-        }
-        return totalPrice;
-    }
-    var addItem = function(name, cost) {
-        name = name.charAt(0).toUpperCase() + name.slice(1);
-        $('#item-list').prepend('<div class="row item"> \
-        <div class="item-name col-xs-3"> \ '
-        +  name + '\
-        </div> \
-        <div class="item-price col-xs-3"> \
-          $' + cost + '.00 \
-        </div> \
-        <div class="item-qty col-xs-3"> \
-          <label>QTY</label> \
-          <input class="quantity"> \
-        </div> \
-        <div class="col-xs-1"> \
-          <button class="remove"> \
-            Remove \
-          </button> \
-        </div> \
-        <div class="item-subtotal col-xs-2"> \
-        $--.-- \
-        </div> \
-      </div>');
-    }
+var plusQty = addBtn.click(function() {
+  var $n = $(this)
+  .parent(".button-container")
+  .find(".qty");
+  $n.val(Number($n.val()) + 1);
+  updateTotal();
+});
 
-})
+var minusQty = subBtn.click(function() {
+  var $n = $(this)
+  .parent(".button-container")
+  .find(".qty");
+  var qtyVal = Number($n.val());
+  if (qtyVal > 0) {
+    $n.val(qtyVal - 1);
+  }
+  updateTotal();
 
+
+});

@@ -1,29 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 body {
+    font-family: 'Montserrat', sans-serif;
     background-color: white;
 }
 
-#headCart {
-    background-color: green;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+i {
+    margin-right: 10px;
+}
+
+input:focus,
+button:focus,
+.form-control:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.table tr,
+.table tr td{
+    vertical-align: middle;
+}
+
+.button-container{
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    padding: 20px, 20px, 20px, 20px;
-    width: 75%;
-    line-height: 100%;
+    align-items: center;
 }
 
-.lineItem {
-    margin-left: 25%;
-    display: flex;
-    justify-content: center;
-} 
-
-#theItems {
-    list-style: none;
-    margin-left: 100px;
-    margin-top: 25px;
+.button-container .form-control{
+    max-width: 80px;
+    text-align: center;
+    display: inline-block;
+    margin: 0px 5px;
 }
 
-input[type=number] {
-    max-width: 55px;
+#myTable .form-control{
+    width: auto;
+    display: inline-block;
 }
+
+.cart-qty-plus,
+.cart-qty-minus{
+    width: 38px;
+    height: 38px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.cart-qty-plus:hover,
+.cart-qty-minus:hover{
+    background-color: #5161ce;
+    color: #fff;
+}
+
+.image-product{
+    width: 50px;
+    height: 50px;
+    background-color: #5161ce;
+    border-radius: 4px;
+}
+
+.image-product img{
+    width: 100%;
+}
+
